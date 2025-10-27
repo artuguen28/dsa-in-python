@@ -36,6 +36,22 @@ class LinkedList:
         
         curr.next = newNode
 
+    def reverseList(self):
+        if not self.head:
+            print("The list is empty")
+            return
+        
+        prev = None
+        curr = self.head
+        
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+
+        self.head = prev
+
 
 
 if __name__ == "__main__":
@@ -46,4 +62,9 @@ if __name__ == "__main__":
     sll.insertNode(6)
     sll.insertNode(10)
     sll.insertNode(17)
+
+    sll.printLinkedList()
+
+    sll.reverseList()
+
     sll.printLinkedList()
