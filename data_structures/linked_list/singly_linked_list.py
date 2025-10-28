@@ -52,6 +52,31 @@ class LinkedList:
 
         self.head = prev
 
+    def deleteNodeByValue(self, value: int):
+        if not self.head:  # Handle empty list
+            print("The list is empty")
+            return
+
+        # Handle deletion of the head node
+        if self.head.data == value:
+            temp = self.head
+            self.head = self.head.next
+            del temp
+            return
+
+        curr = self.head
+        prev = None
+
+        # Traverse the list to find the node to delete
+        while curr:
+            if curr.data == value:
+                prev.next = curr.next
+                del curr
+                return
+            prev = curr
+            curr = curr.next
+
+        print("Value not found in the list")
 
 
 if __name__ == "__main__":
