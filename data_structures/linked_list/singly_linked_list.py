@@ -160,6 +160,32 @@ class LinkedList:
 
         print(f"The middle node is {slow}.")
 
+    def removeDuplicates(self):
+        if not self.head:  # Handle empty list
+            print("The list is empty")
+            return
+        
+        hashTable = set()
+
+        curr = self.head
+        prev = None
+        d = 0
+        while curr:
+            if curr.data not in hashTable:
+                hashTable.add(curr.data)
+                prev = curr  # Update prev only when no duplicate is found
+            else:
+                temp = curr
+                prev.next = curr.next
+                del temp
+                d += 1
+            curr = prev.next if prev else None
+
+        if d == 0:
+            print("No nodes were deleted")
+        
+                
+
 
 
 if __name__ == "__main__":
@@ -168,9 +194,10 @@ if __name__ == "__main__":
     lst_1.insertNode(1)
     lst_1.insertNode(3)
     lst_1.insertNode(5)
-    lst_1.insertNode(8)
+    lst_1.insertNode(5)
     lst_1.insertNode(8)
     lst_1.insertNode(10)
 
-    lst_1.findTheMiddleNode()
+    lst_1.printLinkedList()
+    lst_1.removeDuplicates()
     lst_1.printLinkedList()
