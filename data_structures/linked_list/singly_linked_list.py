@@ -67,7 +67,6 @@ class LinkedList:
             curr = curr.next
         print()
         
-
     def insertNode(self, value: int):
         newNode = Node(value)
         if not self.head:
@@ -148,32 +147,19 @@ class LinkedList:
 
         print("Invalid position")  # Position out of bounds
 
+    def findTheMiddleNode(self):
+        if not self.head:  # Handle empty list
+            print("The list is empty")
+            return
 
-def mergeTwoSortedLists(lst_1: LinkedList, lst_2: LinkedList) -> LinkedList:
-    mergedList = LinkedList()
+        fast = self.head
+        slow = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-    curr_1 = lst_1.head
-    curr_2 = lst_2.head
+        print(f"The middle node is {slow}.")
 
-    while curr_1 and curr_2:
-        if (curr_1.data < curr_2.data):
-            mergedList.insertNode(curr_1.data)
-            curr_1 = curr_1.next
-        else:
-            mergedList.insertNode(curr_2.data)
-            curr_2 = curr_2.next
-
-    
-    while curr_1:
-        mergedList.insertNode(curr_1.data)
-        curr_1 = curr_1.next
-        
-    while curr_2:
-        mergedList.insertNode(curr_2.data)
-        curr_2 = curr_2.next
-
-    return mergedList
-                
 
 
 if __name__ == "__main__":
@@ -182,13 +168,9 @@ if __name__ == "__main__":
     lst_1.insertNode(1)
     lst_1.insertNode(3)
     lst_1.insertNode(5)
+    lst_1.insertNode(8)
+    lst_1.insertNode(8)
+    lst_1.insertNode(10)
 
-    lst_2 = LinkedList()
-    lst_2.insertNode(2)
-    lst_2.insertNode(4)
-    lst_2.insertNode(6)
-    lst_2.insertNode(9)
-    lst_2.insertNode(14)
-
-    merged_list = mergeTwoSortedLists(lst_1, lst_2)
-    merged_list.printLinkedList()
+    lst_1.findTheMiddleNode()
+    lst_1.printLinkedList()
