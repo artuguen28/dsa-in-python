@@ -1,3 +1,5 @@
+import queue
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -7,7 +9,7 @@ class Node:
     def __str__(self):
         return str(self.data)
     
-class BinarySearchTree:
+class BinaryTree:
 
     def __init__(self):
         self.root = None
@@ -44,9 +46,79 @@ class BinarySearchTree:
 
         return current
 
-    def insertNode(self, value: int):
+    def insert(self, value: int):
         self.root = self.insertNodeRecursive(self.root, value)
 
+
+
+def inorder(node: Node):
+    if not node:
+        return
+
+    inorder(node.left)
+    print(node.data, end=' ') 
+    inorder(node.right)
+
+def printBFS(node: Node):
+        if not node:
+            return
+
+        q = queue.Queue()
+        q.put((node, 0))  # Store the node along with its layer
+
+        current_layer = 0
+        print(f"Layer {current_layer}:", end=" ")
+        while not q.empty():
+            n, layer = q.get()
+
+            if layer != current_layer:
+                current_layer = layer
+                print()
+                print(f"Layer {current_layer}:", end=" ")
+
+            print(n.data, end=" ")
+
+            if n.left:
+                q.put((n.left, layer + 1))
+            if n.right:
+                q.put((n.right, layer + 1))
+
+        print()  # Print a newline after the last layer
+
+def printDFS(node: Node):
+    if not node:
+        return
+    
+    visited = set()
+    stack = [node]
+    visited.add(node)
+
+    while stack:
+        n = stack.pop()
+        print(n.data, end=" ")
+
+        if n.right and n.right not in visited:
+            visited.add(n.right)
+            stack.append(n.right)
+            
+        if n.left and n.left not in visited:
+            visited.add(n.left)
+            stack.append(n.left)
+
+
+    print()
+
+
+
+
+if __name__ == "__main__":
+    tree = BinaryTree()
+    values = [7, 3, 9, 1, 5, 8, 10]
+    for v in values:
+        tree.insert(v)
+
+    # inorder(tree.root)
+    printBFS(tree.root)
 
 
 

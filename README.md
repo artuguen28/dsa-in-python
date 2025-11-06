@@ -15,7 +15,7 @@ Each topic includes clean implementations and explanations to help build strong 
 ### 2. Data Structures
 #### Linear Structures
 - [ ] Arrays / Lists  
-- [ ] Linked Lists (Singly, Doubly, Circular)  
+- [X] Linked Lists (Singly, Doubly, Circular)  
 - [ ] Stacks  
 - [ ] Queues (Simple, Deque, PriorityQueue)
 
@@ -34,8 +34,8 @@ Each topic includes clean implementations and explanations to help build strong 
 - [ ] Heap Sort
 
 #### Searching
-- [ ] Linear Search  
-- [ ] Binary Search  
+- [X] Linear Search  
+- [X] Binary Search  
 
 #### Divide and Conquer
 - [ ] Merge Sort revisited  
@@ -48,7 +48,7 @@ Each topic includes clean implementations and explanations to help build strong 
 - [ ] Coin Change  
 
 #### Graph Algorithms
-- [ ] BFS / DFS  
+- [X] BFS / DFS  
 - [ ] Dijkstra’s Algorithm  
 - [ ] Topological Sort  
 - [ ] Minimum Spanning Tree (Prim’s / Kruskal’s)
